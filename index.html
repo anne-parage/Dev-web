@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Projet final DevWeb <user-card></title>
+  <script src="productcard.js" type="module"></script>
+  <script src="progressbar.js" type="module"></script>
+  <script src="style.css" type="module"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Boutique</h1>
+  <div class="product-card">
+    <product-card produit="T-shirt stitch" prix="10.99 $" image="stitch.jpg" description="Un petit stitch qui passe par la"></product-card>
+    <product-card produit="Casque" prix="100.0 $" image="casque.jpg" description="Un casque du futur"></product-card>
+  </div>
+
+  <script>
+    document.querySelectorAll('product-card').forEach(card =>{
+      card.addEventListener('add-to-cart',e=>{
+        console.log('Produit ajouté au panier:',e.detail);
+      });
+    });
+  </script>
+  <progress-graph></progress-graph>
+  <script>
+  const progressGraph = document.querySelector('progress-graph');
+
+  document.querySelectorAll('product-card').forEach(card => {
+    card.addEventListener('add-to-cart', e => {
+      console.log('Produit ajouté au panier:', e.detail);
+      progressGraph.increment(e.detail.name);
+    });
+  });
+</script>
+
+</body>
+</html>
