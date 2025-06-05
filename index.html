@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Projet final DevWeb <user-card></title>
+  <title>Projet final DevWeb</title>
   <script src="productcard.js" type="module"></script>
   <script src="progressbar.js" type="module"></script>
   <link rel="stylesheet" href="style.css">
@@ -17,8 +17,20 @@
 <body>
   <h1>Boutique</h1>
   <div class="product-card">
-    <product-card produit="T-shirt stitch" prix="10.99 $" image="stitch.jpg" description="Un petit stitch qui passe par la"></product-card>
-    <product-card produit="Casque" prix="100.0 $" image="casque.jpg" description="Un casque du futur"></product-card>
+    <product-card>
+    <img slot="image" src="stitch.jpg" alt="stitch">
+    <p slot="produit">T-shirt Stitch</p>
+    <p slot="prix">10.99$</p>
+    <p slot="description">Un stitch qui passe par la</p>
+    <button slot="button">Acheter</button>
+  </product-card>
+  <product-card>
+    <img slot="image" src="casque.jpg" alt="casque">
+    <p slot="produit">Casque Moto</p>
+    <p slot="prix">100.99$</p>
+    <p slot="description">Un casque du futur</p>
+    <button slot="button">Acheter</button>
+  </product-card>
   </div>
 
   <script>
