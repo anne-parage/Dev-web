@@ -5,7 +5,7 @@
   <title>Projet final DevWeb <user-card></title>
   <script src="productcard.js" type="module"></script>
   <script src="progressbar.js" type="module"></script>
-  <script src="style.css" type="module"></script>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: sans-serif;
@@ -28,7 +28,10 @@
       });
     });
   </script>
-  <progress-graph></progress-graph>
+  <div class="progress-bar">
+    <progress-graph></progress-graph>
+  </div>
+  
   <script>
   const progressGraph = document.querySelector('progress-graph');
 

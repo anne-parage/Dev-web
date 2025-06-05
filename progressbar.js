@@ -10,7 +10,9 @@ class ProgressGraph extends HTMLElement {
       this.shadowRoot.innerHTML = `
         <style>
           .graph-container {
+            display : flex;
             margin-top: 2rem;
+            gap :25rem;
           }
           .bar-block {
             margin: 1rem 0;
