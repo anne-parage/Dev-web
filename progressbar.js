@@ -12,7 +12,7 @@ class ProgressGraph extends HTMLElement {
           .graph-container {
             display : flex;
             margin-top: 2rem;
-            gap :25rem;
+            gap :24rem;
           }
           .bar-block {
             margin: 1rem 0;
