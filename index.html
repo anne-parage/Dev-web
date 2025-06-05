@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Projet final DevWeb</title>
-  <script src="productcard.js" type="module"></script>
-  <script src="progressbar.js" type="module"></script>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 700px;
-      margin: 2rem auto;
-    }
-  </style>
-</head>
-<body>
-  <h1>Boutique</h1>
-  <div class="product-card">
+  <head>
+    <meta charset="UTF-8">
+    <title>Projet final DevWeb</title>
+    <script src="productcard.js" type="module"></script>
+    <script src="progressbar.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 700px;
+        margin: 2rem auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Boutique</h1>
+    <div class="product-card">
+      <product-card>
+      <img slot="image" src="stitch.jpg" alt="stitch">
+      <p slot="produit">T-shirt Stitch</p>
+      <p slot="prix">10.99$</p>
+      <p slot="description">Un stitch qui passe par la</p>
+      <button slot="button">Acheter</button>
+    </product-card>
     <product-card>
-    <img slot="image" src="stitch.jpg" alt="stitch">
-    <p slot="produit">T-shirt Stitch</p>
-    <p slot="prix">10.99$</p>
-    <p slot="description">Un stitch qui passe par la</p>
-    <button slot="button">Acheter</button>
-  </product-card>
-  <product-card>
-    <img slot="image" src="casque.jpg" alt="casque">
-    <p slot="produit">Casque Moto</p>
-    <p slot="prix">100.99$</p>
-    <p slot="description">Un casque du futur</p>
-    <button slot="button">Acheter</button>
-  </product-card>
-  </div>
+      <img slot="image" src="casque.jpg" alt="casque">
+      <p slot="produit">Casque Moto</p>
+      <p slot="prix">100.99$</p>
+      <p slot="description">Un casque du futur</p>
+      <button slot="button">Acheter</button>
+    </product-card>
+    </div>
 
-  <script>
-    document.querySelectorAll('product-card').forEach(card =>{
-      card.addEventListener('add-to-cart',e=>{
-        console.log('Produit ajouté au panier:',e.detail);
+    <script>
+      document.querySelectorAll('product-card').forEach(card =>{
+        card.addEventListener('add-to-cart',e=>{
+          console.log('Produit ajouté au panier:',e.detail);
+        });
+      });
+    </script>
+    
+    <div class="progress-bar">
+      <progress-graph></progress-graph>
+    </div>
+    
+    <script>
+    const progressGraph = document.querySelector('progress-graph');
+
+    document.querySelectorAll('product-card').forEach(card => {
+      card.addEventListener('add-to-cart', e => {
+        console.log('Produit ajouté au panier:', e.detail);
+        progressGraph.increment(e.detail.name);
       });
     });
-  </script>
-  
-  <div class="progress-bar">
-    <progress-graph></progress-graph>
-  </div>
-  
-  <script>
-  const progressGraph = document.querySelector('progress-graph');
+    </script>
 
-  document.querySelectorAll('product-card').forEach(card => {
-    card.addEventListener('add-to-cart', e => {
-      console.log('Produit ajouté au panier:', e.detail);
-      progressGraph.increment(e.detail.name);
-    });
-  });
-</script>
-
-</body>
+  </body>
 </html>

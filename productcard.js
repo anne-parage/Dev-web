@@ -67,19 +67,30 @@ class ProductCard extends HTMLElement {
     `;
   }
 
-  connectedCallback() {
-    const button = this.shadowRoot.querySelector('slot[name="button"]').assignedNodes().find(node => node.tagName === 'BUTTON');
-    if (button) {
-      button.addEventListener('click', () => {
-        const name = this.querySelector('[slot="produit"]').textContent;
-        const prix = this.querySelector('[slot="prix"]').textContent;
-        this.dispatchEvent(new CustomEvent('add-to-cart', {
-          detail: { name, prix },
-          bubbles: true,
-          composed: true
-        }));
-      });
-    }
+connectedCallback() {
+    const buttonSlot = this.shadowRoot.querySelector('slot[name="button"]');
+    buttonSlot.addEventListener('slotchange', () => {
+      const button = buttonSlot.assignedElements()[0];
+      if (button) {
+        button.addEventListener('click', () => {
+          const productName = this.querySelector('[slot="produit"]').textContent.trim();
+
+          const event = new CustomEvent('add-to-cart', {
+            detail: { name: this.normalizeName(productName) },
+            bubbles: true,
+            composed: true,
+          });
+
+          this.dispatchEvent(event);
+        });
+      }
+    });
+  }
+
+  normalizeName(name) {
+    if (name.includes('Stitch')) return 'T-shirt stitch';
+    if (name.includes('Casque')) return 'Casque';
+    return name;
   }
 }
 
